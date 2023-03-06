@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-       ArrayList<Person> people = ImportExport.readTXTFile("C:\\Users\\Veronika\\Desktop\\OOP\\hw1\\src\\Data.txt");
+       ArrayList<Person> people = ImportExport.readTXTFile("C:\\Users\\Veronika\\Desktop\\OOP\\hw1\\task01\\Data.txt");
        Person irina = people.get(0);
        Person vasya = people.get(1);
         Person masha = people.get(2);
