@@ -87,6 +87,7 @@ public class Person {
         this.sex = sex;
     }
 
+
     public static @NotNull HashMap<String, String> inputFullName(){
         String [] keys = {"Фамилия", "Имя", "Отчество"};
         HashMap<String, String> fullName = new HashMap<>();
