@@ -3,7 +3,7 @@ import java.util.HashSet;
 
 public class Research{
     final ArrayList<ArrayList<String>> result = new ArrayList<>();
-    static ArrayList<Node> tree;
+    static HashSet<Node> tree;
 
     public Research(GeoTree geoTree) {
         tree = geoTree.getTree();

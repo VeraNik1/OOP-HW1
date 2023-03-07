@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashSet;
+
 /**
  * 1. при добавлении связей необходима проверка, чтобы
  * не было например у одной персоны не было одновременно
@@ -9,9 +11,9 @@ import java.util.ArrayList;
  * 2. необходима возможность удаления/редактирования ошибочной информации в дереве
  * **/
 class GeoTree {
-    private final ArrayList<Node> tree = new ArrayList<>();
+    private final HashSet<Node> tree = new HashSet<>();
 
-    public ArrayList<Node> getTree() {
+    public HashSet<Node> getTree() {
         return tree;
     }
 
