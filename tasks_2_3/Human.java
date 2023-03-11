@@ -129,8 +129,12 @@ public class Human {
             pet.eat();}
         else if (pet.getStage() == Cat.Stage.sleepy) {
             System.out.printf("%s медленно кушает\n", pet.getName());
-            pet.eat();
-        } else {
+            pet.eat();}
+
+        else if (pet.getStage() == Cat.Stage.silent){
+            System.out.printf("%s кушает\n", pet.getName());
+            pet.eat();}
+        else {
             System.out.printf("%s отказывается от еды\n", pet.getName());
             }
         pet.viewParamPet();
@@ -144,11 +148,11 @@ public class Human {
      * @param pet
      */
     public void petThePet(Pet pet) {
-        System.out.printf("%s гладит питомца\n", this.name);
+        System.out.printf("%s пытается погладить питомца\n", this.name);
         checkHumanStat();
         pet.behaviorOfPet();
         if(pet.getStage() == Cat.Stage.sleepy) {
-            System.out.printf("%s питомец расслабленно дремлет рядом с хозяином\n", pet.getName());
+            System.out.println("питомец расслабленно дремлет рядом с хозяином");
             pet.speak();
             pet.cameForSnuggling();}
         else if (pet.getStage() == Cat.Stage.hungry){
@@ -162,6 +166,9 @@ public class Human {
             System.out.printf("%s озверел\n", pet.getName());
             pet.speak();
             pet.killHuman();}
+        else if (pet.getStage() == Cat.Stage.silent){
+            pet.cameForSnuggling();
+}
         else{
             System.out.printf("%s игнорирует нежности\n", pet.getName());
             this.sethMood(Mood.depressed);}
@@ -172,7 +179,7 @@ public class Human {
      * @param pet
      */
     public void playWithPet(Pet pet) {
-        System.out.println("Вы пытаетесь поиграть с питомцем");
+        System.out.printf("%s пытается поиграть с питомцем\n", this.name);
         pet.viewParamPet();
         checkHumanStat();
         pet.behaviorOfPet();
@@ -190,6 +197,11 @@ public class Human {
             System.out.printf("%s озверел\n", pet.getName());
             pet.speak();
             pet.killHuman();}
+
+        else if (pet.getStage() == Cat.Stage.silent){
+            pet.playing();
+            pet.speak();
+        }
         else{
             System.out.printf("%s не хочет с вами играть\n", pet.getName());
             this.sethMood(Mood.depressed);}
@@ -211,10 +223,9 @@ public class Human {
      * @param pet
      * */
     public void kickThePet(Pet pet) {
-        System.out.println("Вы пинаете питомца");
+        System.out.printf("%s пинает питомца", pet.getName());
         checkHumanStat();
         pet.beaten();
-        System.out.println("вжуууух");
         pet.behaviorOfPet();
         if(pet.getMood() == 0) System.out.println("Питомец будет мстить!");
         pet.viewParamPet();

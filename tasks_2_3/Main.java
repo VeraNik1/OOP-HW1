@@ -49,19 +49,36 @@ package tasks_2_3;
             // 2-й сценарий (умирает котик)
             Human he = new Human("Антон", Sex.male, 25);
             Cat kitty = new Cat("Мурка", Sex.female, 2, he);
-           System.out.println(kitty);
-          he.playWithPet(kitty);
-          he.feedThePet(kitty);
-          he.feedThePet(kitty);
-          he.petThePet(kitty);
-          he.playWithPet(kitty);
-          he.playWithPet(kitty);
-          he.kickThePet(kitty);
-          he.kickThePet(kitty);
-          he.kickThePet(kitty);
-          he.kickThePet(kitty);
-          he.kickThePet(kitty);
-          System.out.println(kitty);
+//           System.out.println();
+//          he.playWithPet(kitty);
+//          he.feedThePet(kitty);
+//          he.feedThePet(kitty);
+//          he.petThePet(kitty);
+//          he.playWithPet(kitty);
+//          he.playWithPet(kitty);
+//          he.kickThePet(kitty);
+//          he.kickThePet(kitty);
+//          he.kickThePet(kitty);
+//          he.kickThePet(kitty);
+//          he.kickThePet(kitty);
+//          System.out.println();
 
+
+            // 3-й сценарий (рыбка не может убивать, только умирает)
+           Human she = new Human("Анна", Sex.female, 33);
+           Fish fish = new Fish("Золотая рыбка", Sex.female, 2, she);
+/*            she.playWithPet(fish);
+            she.feedThePet(fish);
+            she.petThePet(fish);
+            she.playWithPet(fish);
+            she.playWithPet(fish);
+            she.kickThePet(fish);
+            she.petThePet(fish);
+            she.playWithPet(fish);
+            she.playWithPet(fish);
+            she.playWithPet(fish);
+            she.playWithPet(fish);*/
         }
+
+
     }

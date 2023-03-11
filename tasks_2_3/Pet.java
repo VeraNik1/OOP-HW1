@@ -10,14 +10,15 @@ public abstract class Pet {
         angry, //злится
         hungry,//голодная
         offended, //обижен
-        moody //не в настроении
+        moody, //не в настроении
+        silent //для неговорящих животных
 
     }
     private static Stage stage;
     public static Pet.Stage getStage() {
         return stage;
     }
-    public void setStage(Cat.Stage angry) {
+    public void setStage(Stage stage) {
         this.stage = stage;
     }
 
@@ -47,7 +48,7 @@ public abstract class Pet {
         return health;
     }
 
-    public void setHealth(int mood) {
+    public void setHealth(int health) {
         this.health = health;
     }
     public int getMood() {
@@ -165,7 +166,6 @@ public abstract class Pet {
      *
      */
     public void behaviorOfPet() {
-
         if (this.health==0){
             System.out.printf("%s умер(\n", name);
             System.out.println("  _|_  \n   |   \n___|___\n   |   \n   |/   \n  /|   \n   |   \n   |   \n");
@@ -203,7 +203,7 @@ public abstract class Pet {
 
     public int correctInt(int num){
         if (num > 100) return 100;
-        if (num <0) return 0;
+        if (num < 0) return 0;
         return num;
 
     }
