@@ -6,7 +6,7 @@ package tasks_2_3;
         public static void main(String[] args) {
 
             Human me = new Human("Вера", Sex.female, 35);
-            Cat cat = new Cat("Вася", Sex.male, 5, me);
+            Dog dog = new Dog("Стивен", Sex.male, 5, me);
             Item item1 = new Item("Миска");
             Item item2 = new Item("Еда");
             Item item3 = new Item("Пакет с пакетами");
@@ -30,37 +30,38 @@ package tasks_2_3;
 //            me.viewInWardrobe(myWard); //посмотрели предметы в шкафу
 
 
-            // тест кота1(Или история созависимых отношений)
+            // тест домашнего животного (Или история созависимых отношений)
 
 
-            System.out.println("Тест кота или созависимые отношения");
+            System.out.println("Тест домашнего животного или созависимые отношения");
             // 1-й сценарий умирает хозяин
-//          System.out.println();
-//          me.playWithCat(cat);
-//          me.playWithCat(cat);
-//          me.feedTheCat(cat);
-//          me.playWithCat(cat);
-//          me.petTheCat(cat);
-//          me.petTheCat(cat);
-//          me.petTheCat(cat);
-//          me.playWithCat(cat);
-//          System.out.println();
+              System.out.println();
+              me.playWithPet(dog);
+              me.playWithPet(dog);
+              me.feedThePet(dog);
+              me.playWithPet(dog);
+              me.petThePet(dog);
+              me.petThePet(dog);
+              me.petThePet(dog);
+              me.playWithPet(dog);
+          System.out.println();
 
             // 2-й сценарий (умирает котик)
             Human he = new Human("Антон", Sex.male, 25);
             Cat kitty = new Cat("Мурка", Sex.female, 2, he);
            System.out.println(kitty);
- //          he.playWithCat(kitty);
- //          he.playWithCat(kitty);
- //          he.feedTheCat(kitty);
- //          he.petTheCat(kitty);
- //          he.playWithCat(kitty);
- //          he.playWithCat(kitty);
- //          he.kickTheCat(kitty);
- //          he.kickTheCat(kitty);
- //          he.kickTheCat(kitty);
- //          he.kickTheCat(kitty);
- //          System.out.println(kitty);
+          he.playWithPet(kitty);
+          he.feedThePet(kitty);
+          he.feedThePet(kitty);
+          he.petThePet(kitty);
+          he.playWithPet(kitty);
+          he.playWithPet(kitty);
+          he.kickThePet(kitty);
+          he.kickThePet(kitty);
+          he.kickThePet(kitty);
+          he.kickThePet(kitty);
+          he.kickThePet(kitty);
+          System.out.println(kitty);
 
         }
     }

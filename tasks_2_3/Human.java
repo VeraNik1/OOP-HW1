@@ -117,107 +117,107 @@ public class Human {
     /** Действия, которые человек делает с котом**/
 
     /** кормим котика
-     * @param cat
+     * @param pet
      * @param meal
      */
-    public void feedTheCat(Cat cat, Integer meal) {//кормим кошку
-        System.out.printf("%s кормит кота\n", this.name);
+    public void feedThePet(Pet pet, Integer meal) {//кормим кошку
+        System.out.printf("%s кормит питомца\n", this.name);
         checkHumanStat();
-        cat.behaviorOfCat();
-        if(cat.getStage() == Cat.Stage.hungry || cat.getStage() == Cat.Stage.angry) {
-            System.out.printf("%s накидывается на еду\n", cat.getName());
-            cat.eat();}
-        else if (cat.getStage() == Cat.Stage.sleepy) {
-            System.out.printf("%s медленно кушает\n", cat.getName());
-            cat.eat();
+        pet.behaviorOfPet();
+        if(pet.getStage() == Cat.Stage.hungry || pet.getStage() == Cat.Stage.angry) {
+            System.out.printf("%s накидывается на еду\n", pet.getName());
+            pet.eat();}
+        else if (pet.getStage() == Cat.Stage.sleepy) {
+            System.out.printf("%s медленно кушает\n", pet.getName());
+            pet.eat();
         } else {
-            System.out.printf("%s отказывается от еды\n", cat.getName());
+            System.out.printf("%s отказывается от еды\n", pet.getName());
             }
-        cat.viewParamCat();
+        pet.viewParamPet();
 
     }
-    public void feedTheCat(Cat cat) {//кормим кошку
-        feedTheCat(cat, 10);
+    public void feedThePet(Pet pet) {//кормим кошку
+        feedThePet(pet, 10);
 
     }
     /** гладим котика
-     * @param cat
+     * @param pet
      */
-    public void petTheCat(Cat cat) {
-        System.out.printf("%s гладит кота\n", this.name);
+    public void petThePet(Pet pet) {
+        System.out.printf("%s гладит питомца\n", this.name);
         checkHumanStat();
-        cat.behaviorOfCat();
-        if(cat.getStage() == Cat.Stage.sleepy) {
-            System.out.printf("%s мирно дремлет на коленях хозяина\n", cat.getName());
-            cat.speak();
-            cat.cameForSnuggling();}
-        else if (cat.getStage() == Cat.Stage.hungry){
-            System.out.printf("%s слишком голоден, чтобы гладиться\n", cat.getName());
-            cat.speak();
-            cat.biteHuman();
-            this.kickTheCat(cat);
+        pet.behaviorOfPet();
+        if(pet.getStage() == Cat.Stage.sleepy) {
+            System.out.printf("%s питомец расслабленно дремлет рядом с хозяином\n", pet.getName());
+            pet.speak();
+            pet.cameForSnuggling();}
+        else if (pet.getStage() == Cat.Stage.hungry){
+            System.out.printf("%s слишком голоден, чтобы гладиться\n", pet.getName());
+            pet.speak();
+            pet.biteHuman();
+            this.kickThePet(pet);
             return;
         }
-        else if (cat.getStage() == Cat.Stage.angry){
-            System.out.printf("%s озверел\n", cat.getName());
-            cat.speak();
-            cat.killHuman();}
+        else if (pet.getStage() == Cat.Stage.angry){
+            System.out.printf("%s озверел\n", pet.getName());
+            pet.speak();
+            pet.killHuman();}
         else{
-            System.out.printf("%s игнорирует нежности\n", cat.getName());
+            System.out.printf("%s игнорирует нежности\n", pet.getName());
             this.sethMood(Mood.depressed);}
-        cat.viewParamCat();
+        pet.viewParamPet();
         showHumanMood();
     }
     /** играем с котом
-     * @param cat
+     * @param pet
      */
-    public void playWithCat(Cat cat) {
-        System.out.println("Вы пытаетесь поиграть с котом");
-        cat.viewParamCat();
+    public void playWithPet(Pet pet) {
+        System.out.println("Вы пытаетесь поиграть с питомцем");
+        pet.viewParamPet();
         checkHumanStat();
-        cat.behaviorOfCat();
-        if(cat.getStage() == Cat.Stage.playful) {
-            cat.speak();
-            System.out.printf("%s с удовольствием играет с %s\n", cat.getName(), this.name);
-            cat.playing();}
-        else if (cat.getStage() == Cat.Stage.hungry){
-            System.out.printf("%s слишком голоден, чтобы играть\n", cat.getName());
-            cat.biteHuman();
-            this.kickTheCat(cat);
+        pet.behaviorOfPet();
+        if(pet.getStage() == Cat.Stage.playful) {
+            pet.speak();
+            System.out.printf("%s с удовольствием играет с %s\n", pet.getName(), this.name);
+            pet.playing();}
+        else if (pet.getStage() == Cat.Stage.hungry){
+            System.out.printf("%s слишком голоден, чтобы играть\n", pet.getName());
+            pet.biteHuman();
+            this.kickThePet(pet);
             return;
             }
-        else if (cat.getStage() == Cat.Stage.angry){
-            System.out.printf("%s озверел\n", cat.getName());
-            cat.speak();
-            cat.killHuman();}
+        else if (pet.getStage() == Cat.Stage.angry){
+            System.out.printf("%s озверел\n", pet.getName());
+            pet.speak();
+            pet.killHuman();}
         else{
-            System.out.printf("%s не хочет с вами играть\n", cat.getName());
+            System.out.printf("%s не хочет с вами играть\n", pet.getName());
             this.sethMood(Mood.depressed);}
         showHumanMood();
     }
 
-    /** зовем котика
-     * @param cat
+    /** зовем питомца
+     * @param pet
      */
-    public void callCat(Cat cat) {//позвать кота
-        System.out.printf("Зовете кота: %s, кис-кис-кис, иди ко мне\n", cat.getName());
+    public void callPet(Pet pet) {//позвать кота
+        System.out.printf("Зовете питомца: %s, иди ко мне\n", pet.getName());
         checkHumanStat();
-        cat.behaviorOfCat();
-        cat.speak();//кот должен ответить
+        pet.behaviorOfPet();
+        pet.speak();//пет должен ответить
         showHumanMood();
-        cat.viewParamCat();
+        pet.viewParamPet();
     }
-    /** пинаем котика
-     * @param cat
-     */
-    public void kickTheCat(Cat cat) {
-        System.out.println("Вы пинаете кота!");
+    /** пинаем пета
+     * @param pet
+     * */
+    public void kickThePet(Pet pet) {
+        System.out.println("Вы пинаете питомца");
         checkHumanStat();
-        cat.beaten();
-        System.out.println("маааааааааааааау");
-        cat.behaviorOfCat();
-        if(cat.getMood() == 0) System.out.println("Зверь будет мстить!");
-        cat.viewParamCat();
+        pet.beaten();
+        System.out.println("вжуууух");
+        pet.behaviorOfPet();
+        if(pet.getMood() == 0) System.out.println("Питомец будет мстить!");
+        pet.viewParamPet();
     }
     // ----------------------------------------------------------------
     /** Проверка настроения и статуса человека**/
