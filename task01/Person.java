@@ -11,21 +11,20 @@ public class Person {
     private Boolean isAlive;
     private Integer age;
     private String sex;
-    private final Integer id;
+    private static Integer id = 0;
 
-    public Person(HashMap<String, String> fullName, String sex, LocalDate birthDate, Boolean isAlive, Integer id) {
+
+    public Person(HashMap<String, String> fullName, String sex, LocalDate birthDate, Boolean isAlive) {
 
         this.fullName = fullName;
         this.birthDate = birthDate;
         this.age = calculateAge(birthDate);
         this.isAlive = isAlive;
         this.sex = sex;
-        this.id = id;
+        id++;
 
     }
-    public Person(HashMap<String, String> fullName, String sex, LocalDate birthDate, Boolean isAlive){
-        this(fullName, sex, birthDate, isAlive, 0);
-    }
+
     public Person(HashMap<String, String> fullName, String sex, LocalDate birthDate) {
         this(fullName, sex, birthDate, (birthDate.isAfter(LocalDate.of(1915,1,1))));
     }

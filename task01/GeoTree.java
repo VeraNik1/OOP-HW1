@@ -10,7 +10,7 @@ import java.util.HashSet;
  * случайно можно поставить партнером и ошибки при добавлении не возникнет
  * 2. необходима возможность удаления/редактирования ошибочной информации в дереве
  * **/
-class GeoTree {
+class GeoTree implements SaveAndLoadGeoTree{
     private final HashSet<Node> tree = new HashSet<>();
 
     public HashSet<Node> getTree() {

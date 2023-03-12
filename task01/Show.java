@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * класс для вывода данных в консоль
  */
-class Show {
+public class Show {
     final GeoTree gTree;
 
     public Show(GeoTree geoTree) {

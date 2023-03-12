@@ -33,7 +33,7 @@ import java.util.Scanner;
                  birthDate = LocalDate.of(Integer.parseInt(dateB[0]), Integer.parseInt(dateB[1]), Integer.parseInt(dateB[2]));
                  //get isAlive status
                  isAlive = (scanner1.next().trim().equals("true"));
-                 records.add(new Person(fullName, sex, birthDate, isAlive, id));
+                 records.add(new Person(fullName, sex, birthDate, isAlive));
                  scanner1.close();
              }
              scanner.close();

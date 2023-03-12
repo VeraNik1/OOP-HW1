@@ -29,7 +29,7 @@ public class Main {
         name.put("Отчество", "Максимовна");
         Person svetlana = new Person(name,
                "female", LocalDate.of(2012, 2, 23),
-               true, 10);
+               true);
        people.add(svetlana);
 
        Show.printPersonInfo(svetlana);
@@ -52,6 +52,7 @@ public class Main {
        gt.addPartner(masha, vasya);
        gt.addPartner(oleg, anna);
        gt.addPartner(alla, maksim);
+       gt.save("GeoTree.txt");
 
        // пытаемся добавить самого себя в партнеры тест
        gt.addPartner(maksim, maksim);
@@ -77,6 +78,9 @@ ImportExport.saveToTXTFile("newData.txt", people);
        new Show(gt).showIfHasRelated(anna, masha, Relationship.partner);
        new Show(gt).showAllRelations(maksim);
 
+GeoTree  treeAnotherOne = new GeoTree();
+        treeAnotherOne.load("QueenFamily.txt");
+        
 // тестовая печать листа с набором персон
 /*       for (Person p:
             people) {
