@@ -1,6 +1,9 @@
 package tasks_2_3;
 
-    public class Main {
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Main {
         public static int i = 1;
 
         public static void main(String[] args) {
@@ -33,7 +36,7 @@ package tasks_2_3;
             // тест домашнего животного (Или история созависимых отношений)
 
 
-            System.out.println("Тест домашнего животного или созависимые отношения");
+/*            System.out.println("Тест домашнего животного или созависимые отношения");
             // 1-й сценарий умирает хозяин
               System.out.println();
               me.playWithPet(dog);
@@ -44,7 +47,7 @@ package tasks_2_3;
               me.petThePet(dog);
               me.petThePet(dog);
               me.playWithPet(dog);
-          System.out.println();
+          System.out.println();*/
 
             // 2-й сценарий (умирает котик)
             Human he = new Human("Антон", Sex.male, 25);
@@ -78,7 +81,39 @@ package tasks_2_3;
             she.playWithPet(fish);
             she.playWithPet(fish);
             she.playWithPet(fish);*/
+
+        //Компараторы  и сортировка
+        System.out.println("Компараторы  и сортировка");
+        Human petsLover = new Human("Антонина", Sex.female, 63);
+        ArrayList<Pet> pets = new ArrayList<>();
+        pets.add(new Cat("Мурка",Sex.female,1, petsLover));
+        pets.add(new Cat("Леопарда",Sex.female,5, petsLover));
+        pets.add(new Fish("Раиса",Sex.female,1, petsLover));
+        pets.add(new Dog("Шарик",Sex.male,7, petsLover));
+        pets.add(new Cat("Васька",Sex.male,5, petsLover));
+        pets.add(new Rat("ВВП",Sex.male,6,petsLover));
+        System.out.println("Список домашних животных: "+ pets);
+        pets.sort(new NameByComparator());
+        System.out.println("Сортировка по имени: "+ pets);
+        Collections.sort(pets);
+        System.out.println("Сортировка по возрасту: "+ pets);
+
+        // производим разные действия
+        petsLover.playWithPet(pets.get(0));
+        petsLover.playWithPet(pets.get(1));
+        petsLover.playWithPet(pets.get(1));
+        petsLover.playWithPet(pets.get(1));
+        petsLover.playWithPet(pets.get(2));
+        petsLover.playWithPet(pets.get(3));
+        petsLover.playWithPet(pets.get(3));
+        petsLover.playWithPet(pets.get(3));
+        petsLover.playWithPet(pets.get(5));
+
+        //сортируем по стемени голода от наибольшего к наименьшему
+        System.out.println("Сортировка по уровню голода");
+            for (Pet p:
+                 pets) {
+                System.out.println(p.toString() +" уровень голода - " + p.getHunger());
+            }
         }
-
-
     }

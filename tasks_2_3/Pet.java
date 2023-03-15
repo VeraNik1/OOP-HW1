@@ -1,9 +1,11 @@
 package tasks_2_3;
 
+import java.util.ArrayList;
+
 import static tasks_2_3.Human.Mood.*;
 import static tasks_2_3.Human.Status.dead;
 
-public abstract class Pet {
+public abstract class Pet implements Comparable<Pet>{
     enum Stage {
         sleepy,//спит
         playful, //играет
@@ -32,6 +34,9 @@ public abstract class Pet {
 
     public String getName() {
         return name;
+    }
+    public int getAge() {
+        return age;
     }
 
     public void setName(String name) {
@@ -216,5 +221,19 @@ public abstract class Pet {
         this.health = correctInt(this.health);
     }
 
+    /**
+     * компаратор по умолчанию
+     *
+     * @param o the object to be compared.
+     * @return
+     */
+    @Override
+    public int compareTo(Pet o) {
+        return this.age - o.getAge();
+    }
+    @Override
+    public String toString() {
+        return String.format("{%s (%s) %s}",this.name,this.sex,this.age);
+    }
 }
 
