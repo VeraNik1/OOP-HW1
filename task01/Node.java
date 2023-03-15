@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 class Node {
     private Person p1;//персона
     private Relationship re; //родственное отношение
@@ -24,6 +26,26 @@ class Node {
     public void setP2(Person person) {
         this.p2=person;
     }
+    /**
+     * переопределение метода сравнения
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Node node = (Node) o;
+        return getP1().equals(node.getP1()) &&
+                getRe() == node.getRe() &&
+                getP2().equals(node.getP2());
+    }
 
+    /**
+     * переопределение HashCode для уникальности от p1.name,p2.name и pe
+     * так мы можем проверять ноды на уникальность по этим трем полям
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(getP1(), getRe(), getP2());
+    }
 
 }
