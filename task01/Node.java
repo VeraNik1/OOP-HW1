@@ -17,9 +17,13 @@ class Node {
 
     @Override
     public String toString() {
-        return String.format("<%s(%s)-> %s>", p1, re, p2);
+        return String.format("<%s (id = %s) is a %s for %s (id = %s)>\n",
+                Show.fullNameToString(p1), p1.getId(), re, Show.fullNameToString(p2), p2.getId());
     }
 
     public void setP2(Person person) {
         this.p2=person;
-    }}
+    }
+
+
+}

@@ -29,36 +29,22 @@ class GeoTree implements SaveAndLoadGeoTree{
                 || person1.equals(person2));
     }
     /**
-     * Отношения родитель <--> потомок
+     * Добавление отношений
      *
-     * @param parent   - родитель
-     * @param child - потомок
+     * @param p1   - родитель
+     * @param p2 - потомок
+     * @param rel - p1 rel p2
+     *
      */
-    public void addParentAndChild(Person parent, Person child) {
-        if (wrongPerson(parent, child)) {//нельзя добавлять null и самого себя
+    public void addRelation(Person p1, Person p2, Relationship rel){
+        if (wrongPerson(p1, p2)){//нельзя добавлять null и самого себя
             System.out.println("Добавление не было выполнено, нельзя добавлять null или самого себя");
             return;
         }
-
-        tree.add(new Node(parent, Relationship.parent, child)); //  parent родитель для children
-        tree.add(new Node(child, Relationship.child, parent)); // children ребенок для parent %(
+        tree.add(new Node(p1, rel, p2));
+        tree.add(new Node(p2, rel.getMirrorRel(), p1));
     }
 
-    /**
-     * Отношения супруг <-> супруга (партнер)
-     *
-     * @param partner1 - первый супруг(а)
-     * @param partner2 - второй супруг(а)
-     */
-    public void addPartner(Person partner1, Person partner2) {
-        if (wrongPerson(partner1, partner2)) {
-            System.out.println("Добавление не было выполнено, " +
-                    "нельзя добавлять null или самого себя");
-            return; //нельзя добавлять null и самого себя
-        }
-        tree.add(new Node(partner1, Relationship.partner, partner2));
-        tree.add(new Node(partner2, Relationship.partner, partner1));
 
-    }
 
 }

@@ -11,7 +11,7 @@ public class Person {
     private Boolean isAlive;
     private Integer age;
     private String sex;
-    private static Integer id = 0;
+    private Integer id = 0;
 
 
     public Person(HashMap<String, String> fullName, String sex, LocalDate birthDate, Boolean isAlive) {
@@ -21,7 +21,7 @@ public class Person {
         this.age = calculateAge(birthDate);
         this.isAlive = isAlive;
         this.sex = sex;
-        id++;
+        this.id ++;
 
     }
 
@@ -46,25 +46,29 @@ public class Person {
         return Period.between(birthday, now).getYears();}
 
     public HashMap<String, String> getFullName() {
-        return fullName;
+        return this.fullName;
     }
     public LocalDate getDateBirth() {
-        return birthDate;
+        return this.birthDate;
     }
     public Integer getAge() {
-        return age;
+        return this.age;
     }
 
     public Boolean getAlive() {
-        return isAlive;
+        return this.isAlive;
     }
 
     public String getSex() {
-        return sex;
+        return this.sex;
     }
 
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setAge(Integer age) {

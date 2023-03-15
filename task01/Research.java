@@ -1,23 +1,22 @@
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.*;
 
 public class Research{
-    final ArrayList<ArrayList<String>> result = new ArrayList<>();
+    final ArrayList<Person> result = new ArrayList<>();
     static HashSet<Node> tree;
 
     public Research(GeoTree geoTree) {
         tree = geoTree.getTree();
     }
 
-
-    public ArrayList<ArrayList<String>> spend(Person p, Relationship re) {
-        ArrayList<ArrayList<String>> result = new ArrayList<>(); // создаем новый список результатов перед каждым поиском
+    public ArrayList<Person> spend(Person p, Relationship re) {
+        ArrayList<Person> result = new ArrayList<>(); // создаем новый список результатов перед каждым поиском
         for (Node t : tree) {
             if (t.getP1().getFullName().equals(p.getFullName()) && t.getRe() == re) {
-                ArrayList<String> name = Show.fullNameToArrString(t.getP2());
-                result.add(name);
+                Person member = t.getP2();
+                result.add(member);
             }
         }
+        Collections.sort(result, new PersonAgeComparator());
         return result;
     }
 
@@ -25,9 +24,9 @@ public class Research{
      * Получаем родителей person
      *
      * @param person .
-     * @return список имен родителей
+     * @return список родителей
      */
-    public ArrayList<ArrayList<String>> getParents(Person person) {
+    public ArrayList<Person> getParents(Person person) {
 
         return spend(person, Relationship.child);
     }
@@ -36,9 +35,9 @@ public class Research{
      * Получаем всех детей person
      *
      * @param person .
-     * @return - список имен детей
+     * @return - список детей
      */
-    public ArrayList<ArrayList<String>> getChildren(Person person) {
+    public ArrayList<Person> getChildren(Person person) {
 
         return spend(person, Relationship.parent);
     }
@@ -47,9 +46,9 @@ public class Research{
      * Получить братьев и сестер
      *
      * @param person .
-     * @return - список имен братьев и сестер
+     * @return - список братьев и сестер
      */
-    public ArrayList<ArrayList<String>> getSiblings(Person person) {
+    public ArrayList<Person> getSiblings(Person person) {
         ArrayList<Node> parents = new ArrayList<>();
         for (Node parent : tree) {//собираем список родителей
             if (parent.getRe() == Relationship.parent && parent.getP2().equals(person)) {
@@ -68,27 +67,28 @@ public class Research{
             }
         }
         for (Person p : brother_sister) {
-            result.add(Show.fullNameToArrString(p));
+            result.add(p);
         }
+        Collections.sort(result, new PersonAgeComparator());
         return result;
 
-    }
 
+    }
     /**
      * Получить партнеров по браку
      *
      * @param person .
      * @return - возвращает партнеров по браку (муж/жена)
      */
-    public ArrayList<ArrayList<String>> getPartners(Person person) {
+    public ArrayList<Person> getPartners(Person person) {
 
         return spend(person, Relationship.partner);
     }
-    public static ArrayList<String> getAllRelations(Person p) {
-        ArrayList<String> res = new ArrayList<>();
+    public static HashMap<Person, Relationship> getAllRelations(Person p) {
+        HashMap<Person, Relationship> res = new HashMap<>();
         for (Node t : tree) {
             if (t.getP1().getFullName().equals(p.getFullName())) {
-                res.add(t.getRe() + " for: " + Show.fullNameToString(t.getP2()));
+                res.put(t.getP2(), t.getRe());
             }
         }
         return res;
@@ -112,4 +112,39 @@ public class Research{
         }
         return false;
     }
+
+    /**
+     * получить бабушек и дедушек
+     *
+     * @param person
+     * @return
+     */
+    public ArrayList<Person> getGrandParents(Person person) {
+        if (person == null) return null;
+        ArrayList<Person> result = new ArrayList<>();
+        for (Person parent : getParents(person)) {
+            result.addAll(getParents(parent));
+        }
+        Collections.sort(result, new PersonAgeComparator());
+        return result;
+    }
+
+    /** удаление из списка умерших людей
+     *
+     * @param list - лист из персон
+     * @return - лист из персон со статусом alive = "true"
+     */
+    public ArrayList<Person> getAlive(ArrayList<Person> list){
+        Iterator<Person> iterator = list.iterator();
+        while (iterator.hasNext()){
+            Person next = iterator.next();
+            if (next.getAlive().equals(false)){
+                iterator.remove();
+            }
+        }
+        return list;
+    }
+
+
+
 }
